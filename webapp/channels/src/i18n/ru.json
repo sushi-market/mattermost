@@ -2833,6 +2833,8 @@
   "announcement_bar.error.trial_license_expiring_last_day": "Это последний день вашего бесплатного пробного периода. Приобретите лицензию, чтобы продолжить использование функций Professional и Enterprise.",
   "announcement_bar.error.trial_license_expiring_last_day.short": "Это последний день вашей бесплатной пробной версии.",
   "announcement_bar.notification.email_verified": "Email подтверждён",
+  "announcementBar.notification.permissionNeverGrantedBar.cta": "Настроить уведомления",
+  "announcementBar.notification.permissionNeverGrantedBar.message": "Нам нужно ваше разрешение, чтобы показывать уведомления в браузере.",
   "announcement_bar.warn.contact_support_text": "Чтобы продлить лицензию, обратитесь в службу поддержки по адресу support@mattermost.com.",
   "announcement_bar.warn.no_internet_connection": "Похоже, у вас нет доступа к интернету.",
   "announcement_bar.warn.renew_license_contact_sales": "Связаться с отделом продаж",
