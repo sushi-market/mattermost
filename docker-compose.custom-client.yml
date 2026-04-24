@@ -1,0 +1,46 @@
+name: mattermost-custom-client
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: mmuser
+      POSTGRES_PASSWORD: mostest
+      POSTGRES_DB: mattermost
+    volumes:
+      - mattermost-custom-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mmuser -d mattermost"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mattermost:
+    image: sushi-market/mattermost-custom-client:11.4.2-local
+    platform: linux/amd64
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8065:8065"
+    environment:
+      MM_SERVICESETTINGS_SITEURL: http://localhost:8065
+      MM_SERVICESETTINGS_ENABLELOCALMODE: "true"
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://mmuser:mostest@postgres:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_TEAMSETTINGS_SITENAME: DATAFOOD
+      MM_LOCALIZATIONSETTINGS_DEFAULTSERVERLOCALE: ru
+      MM_LOCALIZATIONSETTINGS_DEFAULTCLIENTLOCALE: ru
+      MM_LOGSETTINGS_CONSOLELEVEL: INFO
+    volumes:
+      - mattermost-custom-data:/mattermost/data
+      - mattermost-custom-logs:/mattermost/logs
+      - mattermost-custom-plugins:/mattermost/plugins
+      - mattermost-custom-client-plugins:/mattermost/client/plugins
+
+volumes:
+  mattermost-custom-postgres:
+  mattermost-custom-data:
+  mattermost-custom-logs:
+  mattermost-custom-plugins:
+  mattermost-custom-client-plugins:

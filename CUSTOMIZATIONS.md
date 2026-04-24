@@ -14,6 +14,50 @@
 - Официальный базовый тег: `v11.4.2`
 - Ветка кастомизации: `custom-client-11.4.2`
 
+## Локальная проверка в Docker
+
+Для проверки кастомного веб-клиента используется отдельный compose-файл `docker-compose.custom-client.yml`.
+Он поднимает тестовый Postgres и Mattermost Team Edition 11.4.2 с нашим собранным клиентом.
+
+Сборка веб-клиента:
+
+```sh
+docker run --rm --platform linux/amd64 \
+  -v mattermost-webapp-npm-cache-amd64:/root/.npm \
+  -v "$PWD/webapp:/work" \
+  -w /work node:20.11-bookworm \
+  bash -lc 'git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" && git config --global url."https://github.com/".insteadOf "git@github.com:" && npm ci --include=dev --no-audit && npm run build'
+```
+
+Сборка локального образа Mattermost с кастомным клиентом:
+
+```sh
+docker build --platform linux/amd64 \
+  -f .docker/custom-client/Dockerfile \
+  -t sushi-market/mattermost-custom-client:11.4.2-local \
+  webapp/channels/dist
+```
+
+Запуск:
+
+```sh
+docker compose -f docker-compose.custom-client.yml up -d
+```
+
+После запуска веб-клиент доступен на `http://localhost:8065`.
+
+Остановка без удаления тестовых данных:
+
+```sh
+docker compose -f docker-compose.custom-client.yml down
+```
+
+Полный сброс тестовых данных:
+
+```sh
+docker compose -f docker-compose.custom-client.yml down -v
+```
+
 ## Журнал кастомизаций
 
 | Дата | Область | Файлы | Описание |
@@ -26,3 +70,4 @@
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведена подсказка над полем поиска каналов в модальном окне быстрого переключения. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены недостающие пункты меню заголовка канала: настройки канала, участники и панель закладок. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены короткие пункты «Заглушить» и «Включить звук» в меню личных и групповых диалогов левого сайдбара. |
+| 2026-04-24 | Локальная проверка | `.docker/custom-client/Dockerfile`, `docker-compose.custom-client.yml`, `CUSTOMIZATIONS.md` | Добавлен Docker-контур для проверки собранного кастомного веб-клиента на `http://localhost:8065`. |
