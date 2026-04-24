@@ -22,3 +22,4 @@
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведена синяя панель запроса разрешения на браузерные уведомления. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены пункты меню плюса в левом сайдбаре: создание и просмотр каналов, личные сообщения, группы пользователей, категории и приглашение людей. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведено меню аккаунта пользователя: статусы, профиль, выход и подменю режима «Не беспокоить». |
+| 2026-04-24 | Меню веб-приложения | `webapp/channels/src/components/global_header/left_controls/product_menu/product_menu_list/product_menu_list.tsx`, `webapp/channels/src/components/mobile_sidebar_right/mobile_sidebar_right_items/mobile_sidebar_right_items.tsx` | Скрыт пункт «О DATAFOOD» в меню продуктов. |

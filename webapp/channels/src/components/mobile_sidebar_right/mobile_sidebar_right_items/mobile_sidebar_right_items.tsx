@@ -9,7 +9,6 @@ import {Permissions} from 'mattermost-redux/constants';
 
 import {emitUserLoggedOutEvent} from 'actions/global_actions';
 
-import AboutBuildModal from 'components/about_build_modal';
 import AddGroupsToTeamModal from 'components/add_groups_to_team_modal';
 import InvitationModal from 'components/invitation_modal';
 import LeaveTeamModal from 'components/leave_team_modal';
@@ -273,6 +272,8 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                         text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                         icon={<i className='fa fa-mobile'/>}
                     />
+                    {/*
+                      Кастомизация форка: скрываем пункт "О ..." в меню продуктов.
                     <Menu.ItemToggleModalRedux
                         id='about'
                         modalId={ModalIdentifiers.ABOUT}
@@ -280,6 +281,7 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                         text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: this.props.siteName || 'Mattermost'})}
                         icon={<i className='fa fa-info'/>}
                     />
+                    */}
                 </Menu.Group>
                 <Menu.Group>
                     <Menu.ItemAction
