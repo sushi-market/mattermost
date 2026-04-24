@@ -25,3 +25,4 @@
 | 2026-04-24 | Меню веб-приложения | `webapp/channels/src/components/global_header/left_controls/product_menu/product_menu_list/product_menu_list.tsx`, `webapp/channels/src/components/mobile_sidebar_right/mobile_sidebar_right_items/mobile_sidebar_right_items.tsx` | Скрыт пункт «О DATAFOOD» в меню продуктов. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведена подсказка над полем поиска каналов в модальном окне быстрого переключения. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены недостающие пункты меню заголовка канала: настройки канала, участники и панель закладок. |
+| 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены короткие пункты «Заглушить» и «Включить звук» в меню личных и групповых диалогов левого сайдбара. |
