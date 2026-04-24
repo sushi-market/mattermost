@@ -4523,6 +4523,7 @@
   "quick_switch_modal.help_mobile": "Вводите для поиска канала.",
   "quick_switch_modal.input": "быстрое переключение ввода",
   "quick_switch_modal.switchChannels": "Найти каналы",
+  "quickSwitchModal.help_no_team": "Начните вводить название канала. Используйте <b>UP/DOWN</b> для перемещения, <b>ENTER</b> для выбора, <b>ESC</b> для закрытия.",
   "reaction.add.ariaLabel": "Добавить реакцию",
   "reaction.clickToAdd": "(нажмите, чтобы добавить)",
   "reaction.clickToRemove": "(нажмите, чтобы удалить)",
