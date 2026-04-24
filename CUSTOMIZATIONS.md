@@ -1,21 +1,21 @@
-# Mattermost Customizations
+# Кастомизации Mattermost
 
-This fork tracks local changes applied on top of official Mattermost release tags.
+Этот файл фиксирует локальные изменения, которые мы накладываем поверх официальных релизных тегов Mattermost.
 
-## Fork Workflow
+## Рабочий процесс форка
 
-- Keep the official Mattermost repository as `upstream`.
-- Keep local customization branches based on official release tags, for example `custom-client-11.4.2` from `v11.4.2`.
-- Keep each customization as a small, focused commit so it can be moved to a newer Mattermost tag with `git cherry-pick`.
-- Do not commit generated build output unless a deployment process explicitly requires it.
+- Официальный репозиторий Mattermost хранится в remote `upstream`.
+- Локальные ветки кастомизации создаются от официальных релизных тегов, например `custom-client-11.4.2` от `v11.4.2`.
+- Каждая кастомизация оформляется отдельным небольшим коммитом, чтобы ее можно было перенести на новый тег Mattermost через `git cherry-pick`.
+- Сгенерированные файлы сборки не коммитятся, если это явно не требуется процессом деплоя.
 
-## Active Base
+## Текущая база
 
-- Official base tag: `v11.4.2`
-- Custom branch: `custom-client-11.4.2`
+- Официальный базовый тег: `v11.4.2`
+- Ветка кастомизации: `custom-client-11.4.2`
 
-## Custom Change Log
+## Журнал кастомизаций
 
-| Date | Area | Files | Description |
+| Дата | Область | Файлы | Описание |
 | --- | --- | --- | --- |
-| 2026-04-24 | Web app HTML | `webapp/channels/src/root.html` | Set the root document language to Russian with `<html lang="ru">`. |
+| 2026-04-24 | HTML веб-приложения | `webapp/channels/src/root.html` | Установлен русский язык корневого HTML-документа через `<html lang="ru">`. |
