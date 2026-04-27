@@ -44,6 +44,10 @@ const RightControlsContainer = styled.div`
 `;
 
 const DownloadAppButton = styled.a`
+    &&& {
+        color: rgba(255, 255, 255, 0.88) !important;
+    }
+
     display: inline-flex;
     height: 20px;
     align-items: center;
@@ -52,7 +56,6 @@ const DownloadAppButton = styled.a`
     border: none;
     border-radius: var(--radius-s);
     background: rgba(255, 255, 255, 0.10);
-    color: rgba(255, 255, 255, 0.88);
     font-family: 'Open Sans', sans-serif;
     font-size: 11px;
     font-weight: 600;
@@ -61,10 +64,15 @@ const DownloadAppButton = styled.a`
     white-space: nowrap;
     transition: background-color 150ms ease, color 150ms ease;
 
+    &:visited {
+        color: rgba(255, 255, 255, 0.88) !important;
+    }
+
     &:hover,
-    &:focus {
+    &:focus,
+    &:active {
         background: rgba(255, 255, 255, 0.16);
-        color: #fff;
+        color: #fff !important;
         text-decoration: none;
     }
 
@@ -73,6 +81,10 @@ const DownloadAppButton = styled.a`
         box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
             inset 0 0 0 2px var(--sidebar-header-bg);
     }
+`;
+
+const DownloadAppButtonText = styled.span`
+    color: inherit !important;
 `;
 
 const StyledCustomizeYourExperienceTour = styled.div`
@@ -107,10 +119,12 @@ const RightControls = ({productId = null}: Props): JSX.Element => {
                         rel='noopener noreferrer'
                         aria-label={formatMessage({id: 'custom.global_header.downloadApp', defaultMessage: 'Скачать приложение'})}
                     >
-                        <FormattedMessage
-                            id='custom.global_header.downloadApp'
-                            defaultMessage='Скачать приложение'
-                        />
+                        <DownloadAppButtonText>
+                            <FormattedMessage
+                                id='custom.global_header.downloadApp'
+                                defaultMessage='Скачать приложение'
+                            />
+                        </DownloadAppButtonText>
                     </DownloadAppButton>
                     <AtMentionsButton/>
                     <SavedPostsButton/>
