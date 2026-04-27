@@ -38,7 +38,6 @@ export type Props = {
     isMobile: boolean;
     teamId?: string;
     teamName?: string;
-    siteName: string;
     currentUser: UserProfile;
     appDownloadLink: string;
     isMessaging: boolean;
@@ -211,16 +210,7 @@ const ProductMenuList = (props: Props): JSX.Element | null => {
                     text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                     icon={<DownloadOutlineIcon size={18}/>}
                 />
-                {/*
-                  Кастомизация форка: скрываем пункт "О ..." в меню продуктов.
-                <Menu.ItemToggleModalRedux
-                    id='about'
-                    modalId={ModalIdentifiers.ABOUT}
-                    dialogType={AboutBuildModal}
-                    text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: siteName})}
-                    icon={<InformationOutlineIcon size={18}/>}
-                />
-                */}
+                {/* Кастомизация DATAFOOD: пункт "О ..." намеренно скрыт. */}
             </div>
         </Menu.Group>
     );

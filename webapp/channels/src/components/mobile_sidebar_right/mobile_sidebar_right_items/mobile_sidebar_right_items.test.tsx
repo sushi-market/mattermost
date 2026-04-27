@@ -23,7 +23,6 @@ describe('MobileSidebarRightItems', () => {
         pluginMenuItems: [],
         isMentionSearch: false,
         usageDeltaTeams: 0,
-        siteName: 'site-name',
         isLicensedForLDAPGroups: false,
         guestAccessEnabled: true,
         actions: {

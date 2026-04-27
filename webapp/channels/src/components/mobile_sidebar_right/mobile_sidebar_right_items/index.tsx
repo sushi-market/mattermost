@@ -32,7 +32,6 @@ function mapStateToProps(state: GlobalState) {
     const currentTeam = getCurrentTeam(state);
 
     const appDownloadLink = config.AppDownloadLink;
-    const siteName = config.SiteName;
     const experimentalPrimaryTeam = config.ExperimentalPrimaryTeam;
     const helpLink = config.HelpLink;
     const reportAProblemLink = getReportAProblemLink(state);
@@ -56,7 +55,6 @@ function mapStateToProps(state: GlobalState) {
         reportAProblemLink,
         pluginMenuItems: state.plugins.components.MainMenu,
         moreTeamsToJoin,
-        siteName,
         teamId: currentTeam?.id,
         teamName: currentTeam?.name,
         isMentionSearch: rhsState === RHSStates.MENTION,

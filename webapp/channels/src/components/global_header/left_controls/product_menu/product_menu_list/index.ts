@@ -41,7 +41,6 @@ function mapStateToProps(state: GlobalState) {
 
     const appDownloadLink = config.AppDownloadLink || '';
     const enableCommands = config.EnableCommands === 'true';
-    const siteName = config.SiteName || 'Mattermost';
     const enableIncomingWebhooks = config.EnableIncomingWebhooks === 'true';
     const enableOAuthServiceProvider = config.EnableOAuthServiceProvider === 'true';
     const enableOutgoingWebhooks = config.EnableOutgoingWebhooks === 'true';
@@ -88,7 +87,6 @@ function mapStateToProps(state: GlobalState) {
         canManageSystemBots,
         enablePluginMarketplace,
         pluginMenuItems: state.plugins.components.MainMenu,
-        siteName,
         teamId: currentTeam?.id,
         teamName: currentTeam?.name,
         currentUser,

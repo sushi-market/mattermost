@@ -272,16 +272,7 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                         text={formatMessage({id: 'navbar_dropdown.nativeApps', defaultMessage: 'Download Apps'})}
                         icon={<i className='fa fa-mobile'/>}
                     />
-                    {/*
-                      Кастомизация форка: скрываем пункт "О ..." в меню продуктов.
-                    <Menu.ItemToggleModalRedux
-                        id='about'
-                        modalId={ModalIdentifiers.ABOUT}
-                        dialogType={AboutBuildModal}
-                        text={formatMessage({id: 'navbar_dropdown.about', defaultMessage: 'About {appTitle}'}, {appTitle: this.props.siteName || 'Mattermost'})}
-                        icon={<i className='fa fa-info'/>}
-                    />
-                    */}
+                    {/* Кастомизация DATAFOOD: пункт "О ..." намеренно скрыт. */}
                 </Menu.Group>
                 <Menu.Group>
                     <Menu.ItemAction

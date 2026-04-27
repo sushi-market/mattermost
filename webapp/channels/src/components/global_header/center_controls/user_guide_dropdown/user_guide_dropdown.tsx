@@ -48,7 +48,7 @@ class UserGuideDropdown extends React.PureComponent<Props, State> {
 
         return (
             <Menu.Group>
-                {/* DATAFOOD customization: keep the help menu local-only, without external Mattermost links. */}
+                {/* Кастомизация DATAFOOD: оставляем в меню помощи только локальное действие, без внешних ссылок Mattermost. */}
                 <Menu.ItemAction
                     id='keyboardShortcuts'
                     iconClassName='icon-keyboard-return'

@@ -36,7 +36,6 @@ describe('components/global/product_switcher_menu', () => {
         isMobile: false,
         teamId: '',
         teamName: '',
-        siteName: '',
         currentUser: user,
         appDownloadLink: 'test–link',
         isMessaging: true,

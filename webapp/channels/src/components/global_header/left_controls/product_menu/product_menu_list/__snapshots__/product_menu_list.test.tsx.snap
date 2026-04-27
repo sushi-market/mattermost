@@ -160,25 +160,6 @@ exports[`components/global/product_switcher_menu should match snapshot with id 1
       text="Download Apps"
       url="test–link"
     />
-    <MenuItemToggleModalRedux
-      dialogType={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "type": [Function],
-        }
-      }
-      icon={
-        <InformationOutlineIcon
-          size={18}
-        />
-      }
-      id="about"
-      modalId="about"
-      show={true}
-      text="About "
-    />
   </div>
 </Memo(MenuGroup)>
 `;
@@ -342,25 +323,6 @@ exports[`components/global/product_switcher_menu should match snapshot with most
       show={true}
       text="Download Apps"
       url="test–link"
-    />
-    <MenuItemToggleModalRedux
-      dialogType={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "type": [Function],
-        }
-      }
-      icon={
-        <InformationOutlineIcon
-          size={18}
-        />
-      }
-      id="about"
-      modalId="about"
-      show={true}
-      text="About "
     />
   </div>
 </Memo(MenuGroup)>
@@ -652,25 +614,6 @@ exports[`components/global/product_switcher_menu should show integrations should
       show={true}
       text="Download Apps"
       url="test–link"
-    />
-    <MenuItemToggleModalRedux
-      dialogType={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "type": [Function],
-        }
-      }
-      icon={
-        <InformationOutlineIcon
-          size={18}
-        />
-      }
-      id="about"
-      modalId="about"
-      show={true}
-      text="About "
     />
   </div>
 </Fragment>
