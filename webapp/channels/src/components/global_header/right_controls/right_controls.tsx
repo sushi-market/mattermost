@@ -6,7 +6,6 @@ import {FormattedMessage, useIntl} from 'react-intl';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 
-import {DownloadOutlineIcon} from '@mattermost/compass-icons/components';
 import type {ProductIdentifier} from '@mattermost/types/products';
 
 import {isCurrentUserGuestUser} from 'mattermost-redux/selectors/entities/users';
@@ -46,32 +45,26 @@ const RightControlsContainer = styled.div`
 
 const DownloadAppButton = styled.a`
     display: inline-flex;
-    height: 32px;
+    height: 20px;
     align-items: center;
     justify-content: center;
-    padding: 0 9px;
-    border: 1px dashed rgba(var(--global-header-text-rgb), 0.36);
-    border-radius: 4px;
-    background: transparent;
-    color: rgba(var(--global-header-text-rgb), 0.72);
-    column-gap: 6px;
-    font-size: 12px;
+    padding: 2px 8px;
+    border: none;
+    border-radius: var(--radius-s);
+    background: rgba(var(--sidebar-text-rgb), 0.08);
+    color: rgba(var(--sidebar-text-rgb), 0.75);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
     font-weight: 600;
     line-height: 16px;
     text-decoration: none;
     white-space: nowrap;
-    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
-
-    svg {
-        flex: 0 0 auto;
-        color: inherit;
-    }
+    transition: background-color 150ms ease, color 150ms ease;
 
     &:hover,
     &:focus {
-        border-color: rgba(var(--global-header-text-rgb), 0.56);
-        background: rgba(var(--global-header-text-rgb), 0.08);
-        color: rgba(var(--global-header-text-rgb), 0.96);
+        background: rgba(var(--sidebar-text-rgb), 0.14);
+        color: rgba(var(--sidebar-text-rgb), 0.95);
         text-decoration: none;
     }
 
@@ -114,10 +107,6 @@ const RightControls = ({productId = null}: Props): JSX.Element => {
                         rel='noopener noreferrer'
                         aria-label={formatMessage({id: 'custom.global_header.downloadApp', defaultMessage: 'Скачать приложение'})}
                     >
-                        <DownloadOutlineIcon
-                            size={15}
-                            aria-hidden='true'
-                        />
                         <FormattedMessage
                             id='custom.global_header.downloadApp'
                             defaultMessage='Скачать приложение'
