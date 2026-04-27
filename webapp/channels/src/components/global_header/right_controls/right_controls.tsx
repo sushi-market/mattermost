@@ -51,8 +51,8 @@ const DownloadAppButton = styled.a`
     padding: 2px 8px;
     border: none;
     border-radius: var(--radius-s);
-    background: rgba(var(--sidebar-text-rgb), 0.08);
-    color: rgba(var(--sidebar-text-rgb), 0.75);
+    background: rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.88);
     font-family: 'Open Sans', sans-serif;
     font-size: 11px;
     font-weight: 600;
@@ -63,8 +63,8 @@ const DownloadAppButton = styled.a`
 
     &:hover,
     &:focus {
-        background: rgba(var(--sidebar-text-rgb), 0.14);
-        color: rgba(var(--sidebar-text-rgb), 0.95);
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
         text-decoration: none;
     }
 
