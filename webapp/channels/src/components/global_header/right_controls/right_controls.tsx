@@ -6,6 +6,7 @@ import {FormattedMessage, useIntl} from 'react-intl';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 
+import {DownloadOutlineIcon} from '@mattermost/compass-icons/components';
 import type {ProductIdentifier} from '@mattermost/types/products';
 
 import {isCurrentUserGuestUser} from 'mattermost-redux/selectors/entities/users';
@@ -16,6 +17,7 @@ import {
     useShowOnboardingTutorialStep,
 } from 'components/tours/onboarding_tour';
 import UserAccountMenu from 'components/user_account_menu';
+import WithTooltip from 'components/with_tooltip';
 
 import Pluggable from 'plugins/pluggable';
 import {isChannels} from 'utils/products';
@@ -52,17 +54,19 @@ const DownloadAppButton = styled.a`
     height: 20px;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    gap: 5px;
     padding: 2px 8px;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-s);
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.07);
     font-family: 'Open Sans', sans-serif;
     font-size: 11px;
     font-weight: 600;
     line-height: 16px;
     text-decoration: none;
     white-space: nowrap;
-    transition: background-color 150ms ease, color 150ms ease;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
 
     &:visited {
         color: rgba(255, 255, 255, 0.88) !important;
@@ -71,9 +75,14 @@ const DownloadAppButton = styled.a`
     &:hover,
     &:focus,
     &:active {
-        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.15);
         color: #fff !important;
         text-decoration: none;
+    }
+
+    &:active {
+        background: rgba(255, 255, 255, 0.18);
     }
 
     &:focus-visible {
@@ -81,10 +90,33 @@ const DownloadAppButton = styled.a`
         box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.32),
             inset 0 0 0 2px var(--sidebar-header-bg);
     }
+
+    @media screen and (max-width: 1024px) {
+        width: 28px;
+        padding: 0;
+    }
+`;
+
+const DownloadAppButtonIcon = styled.span`
+    display: inline-flex;
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+
+    svg {
+        display: block;
+    }
 `;
 
 const DownloadAppButtonText = styled.span`
     color: inherit !important;
+
+    @media screen and (max-width: 1024px) {
+        display: none;
+    }
 `;
 
 const StyledCustomizeYourExperienceTour = styled.div`
@@ -99,6 +131,7 @@ export type Props = {
 
 const RightControls = ({productId = null}: Props): JSX.Element => {
     const {formatMessage} = useIntl();
+    const downloadAppLabel = formatMessage({id: 'custom.global_header.downloadApp', defaultMessage: 'Скачать приложение'});
 
     // guest validation to see which point the messaging tour tip starts
     const isGuestUser = useSelector((state: GlobalState) => isCurrentUserGuestUser(state));
@@ -113,19 +146,26 @@ const RightControls = ({productId = null}: Props): JSX.Element => {
             <PlanUpgradeButton/>
             {isChannels(productId) ? (
                 <>
-                    <DownloadAppButton
-                        href={DOWNLOAD_APP_URL}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        aria-label={formatMessage({id: 'custom.global_header.downloadApp', defaultMessage: 'Скачать приложение'})}
+                    <WithTooltip
+                        title={downloadAppLabel}
                     >
-                        <DownloadAppButtonText>
-                            <FormattedMessage
-                                id='custom.global_header.downloadApp'
-                                defaultMessage='Скачать приложение'
-                            />
-                        </DownloadAppButtonText>
-                    </DownloadAppButton>
+                        <DownloadAppButton
+                            href={DOWNLOAD_APP_URL}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            aria-label={downloadAppLabel}
+                        >
+                            <DownloadAppButtonIcon aria-hidden='true'>
+                                <DownloadOutlineIcon size={14}/>
+                            </DownloadAppButtonIcon>
+                            <DownloadAppButtonText>
+                                <FormattedMessage
+                                    id='custom.global_header.downloadApp'
+                                    defaultMessage='Скачать приложение'
+                                />
+                            </DownloadAppButtonText>
+                        </DownloadAppButton>
+                    </WithTooltip>
                     <AtMentionsButton/>
                     <SavedPostsButton/>
                 </>
