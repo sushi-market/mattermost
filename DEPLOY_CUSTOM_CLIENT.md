@@ -11,8 +11,8 @@
 Текущая продовая сборка:
 
 ```text
-/Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.1.tar.gz
-/Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.1.tar.gz.sha256
+/Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.2.tar.gz
+/Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.2.tar.gz.sha256
 ```
 
 Архив собран из `webapp/channels/dist`.
@@ -22,8 +22,8 @@
 Выполнить локально, заменив `user@prod` на доступ к серверу:
 
 ```sh
-scp /Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.1.tar.gz user@prod:/tmp/
-scp /Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.1.tar.gz.sha256 user@prod:/tmp/
+scp /Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.2.tar.gz user@prod:/tmp/
+scp /Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/mattermost-client-11.4.2-custom.2.tar.gz.sha256 user@prod:/tmp/
 ```
 
 ## Установка на проде
@@ -32,7 +32,7 @@ scp /Users/deniszakharenko/Documents/projects/mattermost-release-artifacts/matte
 
 ```sh
 export MM_DIR=/opt/mattermost
-export RELEASE=mattermost-client-11.4.2-custom.1.tar.gz
+export RELEASE=mattermost-client-11.4.2-custom.2.tar.gz
 
 sudo "$MM_DIR/bin/mattermost" version
 

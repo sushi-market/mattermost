@@ -71,3 +71,4 @@ docker compose -f docker-compose.custom-client.yml down -v
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены недостающие пункты меню заголовка канала: настройки канала, участники и панель закладок. |
 | 2026-04-24 | Переводы веб-приложения | `webapp/channels/src/i18n/ru.json` | Переведены короткие пункты «Заглушить» и «Включить звук» в меню личных и групповых диалогов левого сайдбара. |
 | 2026-04-24 | Локальная проверка | `.docker/custom-client/Dockerfile`, `docker-compose.custom-client.yml`, `CUSTOMIZATIONS.md` | Добавлен Docker-контур для проверки собранного кастомного веб-клиента на `http://localhost:8065`. |
+| 2026-04-27 | Верхняя панель веб-приложения | `webapp/channels/src/components/global_header/right_controls/right_controls.tsx` | Добавлена кнопка «Скачать приложение» слева от значка упоминаний, открывающая `https://mattermost.datafood.tech/` в новой вкладке. |
