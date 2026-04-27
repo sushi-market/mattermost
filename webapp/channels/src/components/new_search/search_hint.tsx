@@ -106,7 +106,7 @@ const SearchHints = ({onSelectFilter, searchType, searchTerms, searchTeam, hasSe
                     onClick={() => onSelectFilter(filter.searchTerm)}
                 >
                     <span title={intl.formatMessage(filter.message)}>
-                        {filter.searchTerm}
+                        {filter.label ? intl.formatMessage(filter.label) : filter.searchTerm}
                     </span>
                 </SearchFilter>
             ))}

@@ -3,7 +3,7 @@
 
 import classNames from 'classnames';
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, useIntl} from 'react-intl';
 import type {MessageDescriptor} from 'react-intl';
 import {useSelector} from 'react-redux';
 
@@ -15,6 +15,7 @@ import {isFileAttachmentsEnabled} from 'utils/file_utils';
 
 interface SearchTerm {
     searchTerm: string;
+    label?: MessageDescriptor;
     message: MessageDescriptor;
     additionalDisplay?: string;
 }
@@ -33,6 +34,7 @@ type Props = {
 }
 
 const SearchHint = (props: Props): JSX.Element => {
+    const intl = useIntl();
     const handleOnOptionHover = (optionIndex: number) => {
         if (props.onOptionHover) {
             props.onOptionHover(optionIndex);
@@ -40,6 +42,18 @@ const SearchHint = (props: Props): JSX.Element => {
     };
     const config = useSelector(getConfig);
     const isFileAttachmentEnabled = isFileAttachmentsEnabled(config);
+
+    const getOptionLabel = (option: SearchTerm) => {
+        if (option.additionalDisplay) {
+            return option.additionalDisplay;
+        }
+
+        if (option.label) {
+            return intl.formatMessage(option.label);
+        }
+
+        return option.searchTerm;
+    };
 
     if (props.onSearchTypeSelected) {
         if (!props.searchType) {
@@ -144,7 +158,9 @@ const SearchHint = (props: Props): JSX.Element => {
                         onMouseOver={() => handleOnOptionHover(optionIndex)}
                     >
                         <div className='search-hint__suggestion-list__flex-wrap'>
-                            <span className='search-hint__suggestion-list__label'>{option.additionalDisplay ? option.additionalDisplay : option.searchTerm}</span>
+                            <span className='search-hint__suggestion-list__label'>
+                                {getOptionLabel(option)}
+                            </span>
                         </div>
                         <div className='search-hint__suggestion-list__value'>
                             <FormattedMessage
