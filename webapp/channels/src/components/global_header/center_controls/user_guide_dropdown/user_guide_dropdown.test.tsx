@@ -12,20 +12,9 @@ import UserGuideDropdown from './user_guide_dropdown';
 
 describe('components/channel_header/components/UserGuideDropdown', () => {
     const baseProps = {
-        helpLink: 'helpLink',
-        isMobileView: false,
-        reportAProblemLink: 'reportAProblemLink',
-        enableAskCommunityLink: 'true',
-        location: {
-            pathname: '/team/channel/channelId',
-        },
-        teamUrl: '/team',
         actions: {
             openModal: jest.fn(),
         },
-        pluginMenuItems: [],
-        isFirstAdmin: false,
-        onboardingFlowEnabled: false,
     };
 
     test('should match snapshot', () => {
@@ -36,34 +25,16 @@ describe('components/channel_header/components/UserGuideDropdown', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    test('should match snapshot for false of enableAskCommunityLink', () => {
-        const props = {
-            ...baseProps,
-            enableAskCommunityLink: 'false',
-        };
-
+    test('should only render the local keyboard shortcuts action', () => {
         const wrapper = shallowWithIntl(
-            <UserGuideDropdown {...props}/>,
+            <UserGuideDropdown {...baseProps}/>,
         );
 
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.find(Menu.ItemExternalLink).exists()).toBe(false);
+        expect(wrapper.find(Menu.ItemAction).find('#keyboardShortcuts').exists()).toBe(true);
     });
 
-    test('should match snapshot when have plugin menu items', () => {
-        const props = {
-            ...baseProps,
-            pluginMenuItems: [{id: 'testId', pluginId: 'testPluginId', text: 'Test Item', action: () => {}},
-            ],
-        };
-
-        const wrapper = shallowWithIntl(
-            <UserGuideDropdown {...props}/>,
-        );
-
-        expect(wrapper).toMatchSnapshot();
-    });
-
-    test('Should set state buttonActive on toggle of MenuWrapper', () => {
+    test('Should open keyboard shortcuts modal', () => {
         const wrapper = shallowWithIntl(
             <UserGuideDropdown {...baseProps}/>,
         );
@@ -80,35 +51,5 @@ describe('components/channel_header/components/UserGuideDropdown', () => {
 
         wrapper.find(Menu.ItemAction).find('#keyboardShortcuts').prop('onClick')!({preventDefault: jest.fn()} as unknown as React.MouseEvent);
         expect(baseProps.actions.openModal).toHaveBeenCalled();
-    });
-
-    test('should have plugin menu items appended to the menu', () => {
-        const props = {
-            ...baseProps,
-            pluginMenuItems: [{id: 'testId', pluginId: 'testPluginId', text: 'Test Plugin Item', action: () => {}},
-            ],
-        };
-
-        const wrapper = shallowWithIntl(
-            <UserGuideDropdown {...props}/>,
-        );
-
-        // pluginMenuItems are appended, so our entry must be the last one.
-        const pluginMenuItem = wrapper.find(Menu.ItemAction).last();
-        expect(pluginMenuItem.prop('text')).toEqual('Test Plugin Item');
-    });
-
-    test('should only render Report a Problem link when its value is non-empty', () => {
-        const wrapper = shallowWithIntl(
-            <UserGuideDropdown {...baseProps}/>,
-        );
-
-        expect(wrapper.find('#reportAProblemLink').exists()).toBe(true);
-
-        wrapper.setProps({
-            reportAProblemLink: '',
-        });
-
-        expect(wrapper.find('#reportAProblemLink').exists()).toBe(false);
     });
 });
